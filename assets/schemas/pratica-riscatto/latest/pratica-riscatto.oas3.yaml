@@ -27,13 +27,14 @@ components:
 
     PraticaRiscatto:
       type: object
-      x-jsonld-type: https://w3id.org/italia/social-security/onto/contributions/PraticaDiRiscatto
+      x-jsonld-type: https://w3id.org/italia/social-security/onto/contributions/PraticaAdeguamentoContributivo
       # This custom property defines the associated json-ld
       #   context that can be used to semantically describe
       #   the instances.
       x-jsonld-context:
         "@vocab": "https://w3id.org/italia/social-security/onto/contributions/"
-        descrizione_pratica_riscatto: descrizionePratica
+        id_pratica_riscatto: "@id"
+        descrizione_pratica_riscatto: descrizionePratica # TODO: Perchè non lo trova?
         riscatto_ha_atto_adeguamento_contributivo:
           "@id": haAttoAdeguamentoContributivo
         riscatto_ha_domanda_adeguamento_contributivo:
