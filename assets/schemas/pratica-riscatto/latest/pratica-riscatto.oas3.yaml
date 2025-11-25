@@ -19,7 +19,8 @@ components:
   schemas:
     IdPraticaRiscatto:
       type: string
-      description: È il numero della Pratica di Riscatto
+      description: |-
+        Il numero della Pratica di Riscatto, si veda https://w3id.org/italia/social-security/onto/contributions/numeroPratica
       example: "5498553"
       maxLength: 50
       minLength: 1
@@ -85,7 +86,9 @@ components:
         numero_domanda: numeroDomanda
         data_domanda: dataDomanda
       additionalProperties: true
-      description: Documento di domanda relativo all'adeguamento contributivo.
+      description: |-
+        Documento di domanda relativo all'adeguamento contributivo.
+        Si veda https://w3id.org/italia/social-security/onto/contributions/DomandaAdeguamentoContributivo
       required:
         - numero_domanda
         - data_domanda
