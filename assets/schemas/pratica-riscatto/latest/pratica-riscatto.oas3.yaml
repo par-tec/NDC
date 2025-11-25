@@ -168,7 +168,6 @@ components:
     Cf:
       type: string
       maxLength: 20
-      x-refersTo: https://w3id.org/italia/onto/CPV/taxCode
       example: "RSSFRC64G58k152L"
 
     Nome:
