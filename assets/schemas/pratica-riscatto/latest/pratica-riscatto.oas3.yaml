@@ -11,7 +11,7 @@ info:
     name: Andrea Cigliano
     email: andrea.cigliano@inps.it
   description: |-
-    https://w3id.org/italia/social-security/onto/contributions/PraticaDiRiscatto
+    Lo schema dati del servizio che viene invocato per ottenere le informazioni sulla pratica di riscato che consente al lavoratore, anche già pensionato, di conseguire, a proprie spese, il riconoscimento contributivo per specifici periodi altrimenti privi di contribuzione.
 paths: {}
 servers: []
 tags: []
@@ -34,7 +34,7 @@ components:
       x-jsonld-context:
         "@vocab": "https://w3id.org/italia/social-security/onto/contributions/"
         id_pratica_riscatto: numeroPratica
-        descrizione_pratica_riscatto: descrizionePratica # TODO: Perchè non lo trova?
+        descrizione_pratica_riscatto: descrizionePratica
         riscatto_ha_atto_adeguamento_contributivo:
           "@id": haAttoAdeguamentoContributivo
         riscatto_ha_domanda_adeguamento_contributivo:
@@ -70,13 +70,19 @@ components:
         id_pratica_riscatto: "5498553"
         descrizione_pratica_riscatto: "Riscatto"
         riscatto_ha_domanda_adeguamento_contributivo:
-          $ref: "#/components/schemas/DomandaAdeguamentoContributivo/example"
+          numero_domanda: "3154988"
+          data_domanda: "2022-06-25"
         riscatto_ha_atto_adeguamento_contributivo:
-          $ref: "#/components/schemas/AttoAdeguamentoContributivo/example"
+          numero_atto: "2316547"
+          data_atto: "2022-07-25"
         riscatto_ha_pagatore_onere:
-          $ref: "#/components/schemas/Superstite/example"
+          cf_titolare: "RSSFRC64G58k152L"
+          nome_titolare: "Franco"
+          cognome_titolare: "Rossi"
         riscatto_ha_titolare_pratica:
-          $ref: "#/components/schemas/Superstite/example"
+          cf_titolare: "RSSFRC64G58k152L"
+          nome_titolare: "Franco"
+          cognome_titolare: "Rossi"
 
     DomandaAdeguamentoContributivo:
       type: object
@@ -110,7 +116,9 @@ components:
         numero_atto: numeroAtto
         data_atto: dataAtto
       additionalProperties: true
-      description: Atto amministrativo relativo all'adeguamento contributivo.
+      description: |-
+        Atto amministrativo relativo all'adeguamento contributivo.
+        Si veda https://w3id.org/italia/social-security/onto/contributions/AttoAdeguamentoContributivo
       required:
         - numero_atto
         - data_atto
@@ -136,6 +144,7 @@ components:
       description: |-
         Questo schema rappresenta la persona a cui, facendo seguito alla presentazione di idonea domanda, sono riconosciuti i requisiti per accedere alla facoltà di riscatto, ricongiunzione o rendita.
         Tali requisiti possono essere riconosciuti al Titolare anche se non più in vita. Nel caso in cui sia in vita, corrisponde al Richiedente.
+        Si veda https://w3id.org/italia/social-security/onto/contributions/TitolarePraticaAdeguamentoContributivo
       required:
         - cf_titolare
         - nome_titolare
@@ -161,7 +170,9 @@ components:
         nome_superstite: givenName
         cognome_superstite: familyName
       additionalProperties: true
-      description: Superstite che assume il ruolo di pagatore/onere per la pratica di adeguamento contributivo.
+      description: |-
+        Superstite che assume il ruolo di pagatore/onere per la pratica di adeguamento contributivo.
+        Si veda https://w3id.org/italia/social-security/onto/contributions/SuperstiteDiTitolareAdeguamentoContributivo
       required:
         - cf_superstite
         - nome_superstite
@@ -195,7 +206,7 @@ components:
 
     Nome:
       type: string
-      description: Nome proprio della persona.
+      description: Nome della persona.
       maxLength: 50
       example: "Franco"
 
